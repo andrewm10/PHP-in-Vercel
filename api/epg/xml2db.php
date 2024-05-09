@@ -4,23 +4,6 @@
 // http://127.0.0.1/xml2db.php       同步xml数据
 // http://127.0.0.1/xml2db.php?db=1  仅创建数据库,不同步xml数据
 
-// 数据库配置
-$dbConfig = [
-    'host' => getenv('DB_HOST'),     // 从环境变量获取数据库主机
-    'user' => getenv('DB_USER'),     // 从环境变量获取数据库用户
-    'pass' => getenv('DB_PASSWORD'), // 从环境变量获取数据库密码
-    'db'   => getenv('DB_NAME'),     // 从环境变量获取数据库名
-];
-
-// 连接数据库的代码（示例使用MySQLi，实际使用时根据需要选择适合的数据库）
-$mysqli = new mysqli($dbConfig['host'], $dbConfig['user'], $dbConfig['pass'], $dbConfig['db']);
-
-// 检查连接
-if ($mysqli->connect_error) {
-    die("连接失败: " . $mysqli->connect_error);
-}
-
- 
 $save_all = 1; // 1 保存全量节目单, 0 仅保存list中频道相关的节目单
 $empty_tmp = 1; // 1 入库后清除临时表的数据, 0 保留临时表的数据,建议调测期间设置为0, 调测完毕后修改为1,减少存储空间
 $deleteoffset = -8; // 清理xx天前的节目数据
@@ -136,7 +119,7 @@ function getContent($url)
 // $xmlurl = array("http://epg.51zmt.top:8000/e.xml", "http://epg.erw.cc/e.xml", "http://epg.112114.xyz/pp.xml"); //当天 央卫数 节目单
 // $xmlurl = array("http://epg.51zmt.top:8000/cc.xml", "http://epg.erw.cc/cc.xml", "http://epg.112114.xyz/pp.xml"); //当天 央卫 节目单
 // $xmlurl = array("http://epg.112114.xyz/pp.xml.gz", "http://epg.51zmt.top:8000/e.xml.gz", "https://gitee.com/Black_crow/xmlgz/raw/master/e.xml.gz"); //gzip模式
-//$xmlurl = array("https://epg.112114.xyz/pp.xml.gz", "http://epg.51zmt.top:8000/e.xml.gz", "https://epg.erw.cc/e.xml.gz"); //https gzip模式
+// $xmlurl = array("https://epg.112114.xyz/pp.xml.gz", "http://epg.51zmt.top:8000/e.xml.gz", "https://epg.erw.cc/e.xml.gz"); //https gzip模式
 $xmlurl = array("https://gitee.com/Black_crow/xmlgz/raw/master/e.xml.gz");
 // .
 // 遍历xmlurl,同步epg xml数据源
