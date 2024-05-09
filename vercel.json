@@ -2,6 +2,7 @@
   "functions": {
     "api/*.php": {"runtime": "vercel-php@0.5.5"},
     "api/hitokoto/*.php": {"runtime": "vercel-php@0.5.5"},
+    "api/epg/*.php": {"runtime": "vercel-php@0.5.5"},
     "api/bingimg/index.php": {"runtime": "vercel-php@0.5.5"},
     "api/user/index.php": {"runtime": "vercel-php@0.5.5"},
     "api/get/index.php": {"runtime": "vercel-php@0.5.5"},
